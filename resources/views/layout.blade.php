@@ -13,7 +13,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('/FE/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('FE/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('FE/css/tiny-slider.css') }}">
     <link rel="stylesheet" href="{{ asset('FE/css/bootstrap.min.css') }}">
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
@@ -39,18 +39,19 @@
             <div class="collapse navbar-collapse" id="navbarsFurni">
                 <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link" href="">Home</a>
                     </li>
-                    <li><a class="nav-link" href="{{ route('shop') }}">Shop</a></li>
-                    <li><a class="nav-link" href="{{ route('about') }}">About us</a></li>
-                    <li><a class="nav-link" href="{{ route('services') }}">Services</a></li>
-                    <li><a class="nav-link" href="{{ route('blog') }}">Blog</a></li>
-                    <li><a class="nav-link" href="{{ route('contact') }}">Contact us</a></li>
-                    <li><a class="nav-link" href="{{ route('login') }}">login</a></li>
+                    <li><a class="nav-link" href="{{ asset('./shop') }}">Shop</a></li>
+                    <li><a class="nav-link" href="{{ asset('./about') }}">About us</a></li>
+                    <li><a class="nav-link" href="{{ asset('./services') }}">Services</a></li>
+                    <li><a class="nav-link" href="{{ asset('./blog') }}">Blog</a></li>
+                    <li><a class="nav-link" href="{{ asset('./contact') }}">Contact us</a></li>
+                    <li><a class="nav-link" href="{{ asset('home') }}">Login</a></li>
+
                 </ul>
 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                    <li><a class="nav-link" href="#"><img src="{{ asset('./FE/images/user.svg') }}"></a></li>
+                    {{-- <li><a class="nav-link" href="#"><img src="{{ asset('./FE/images/user.svg') }}"></a></li> --}}
                     <li><a class="nav-link" href="cart.html"><img src="{{ asset('./FE/images/cart.svg') }}"></a></li>
                 </ul>
             </div>
@@ -586,7 +587,9 @@
     <!-- End Footer Section -->
 
 
-
+    <script src="{{ asset('FE/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('FE/js/tiny-slider.js') }}"></script>
+    <script src="{{ asset('FE/js/custom.js') }}"></script>
 </body>
 
 </html>
