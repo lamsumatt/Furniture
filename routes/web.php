@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/products/shop', 'App\Http\Controllers\Products\ShopController');
+// Route::resource('/products/shop', 'App\Http\Controllers\Products\ShopController');
 
 Route::get('admincp/dashboard', [DasdboardController::class, 'index'])->name('dashboard');
 

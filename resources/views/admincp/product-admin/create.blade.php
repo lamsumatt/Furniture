@@ -24,25 +24,24 @@
                     <form method="POST" action="{{ route('product-admin.store') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Tên danh mục</label>
-                            <input type="text" name="tendanhmuc" onkeyup="ChangeToSlug();"
-                                value="{{ old('tendanhmuc') }}" class="form-control" id="slug"
-                                aria-describedby="emailHelp" placeholder="Tên danh mục...">
+                            <label for="exampleInputEmail1">Tên loại sản phẩm</label>
+                            <input type="text" name="product_name" onkeyup="ChangeToSlug();"
+                                value="{{ old('product_name') }}" class="form-control" id="slug"
+                                aria-describedby="emailHelp" placeholder="">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Slug danh mục</label>
-                            <input type="text" name="slug_danhmuc" value="{{ old('slug_danhmuc') }}"
-                                class="form-control" id="convert_slug" aria-describedby="emailHelp"
-                                placeholder="Tên danh mục...">
+                            <label for="exampleInputEmail1">Danh sách loại sản phẩm</label>
+                            <input type="text" name="slug_product" value="{{ old('slug_product') }}"
+                                class="form-control" id="convert_slug" aria-describedby="emailHelp" placeholder="">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Mô tả danh mục</label>
-                            <input type="text" name="mota" value="" class="form-control"
-                                id="slug" aria-describedby="emailHelp" placeholder="Mô tả danh mục...">
+                            <label for="exampleInputEmail1">Mô tả loại sản phẩm</label>
+                            <input type="text" name="product_description" value="" class="form-control"
+                                id="slug" aria-describedby="emailHelp" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Kích hoạt</label>
-                            <select name="kichhoat" class="custom-select">
+                            <select name="activated" class="custom-select">
                                 <option value="0">Kích hoạt</option>
                                 <option value="1">Không kích hoạt</option>
                             </select>
