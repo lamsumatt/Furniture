@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Admin\DasdboardController;
-use App\Http\Controllers\Products\ShopController;
 use App\Http\Controllers\Admin\Blog_AdminController;
 use App\Http\Controllers\Admin\Product_AdminController;
+
+use App\Http\Controllers\Admin\Product_detailsController;
 
 Route::get('/', function () {
     return view('layout');
@@ -30,3 +31,4 @@ Route::get('admincp/dashboard', [DasdboardController::class, 'index'])->name('da
 
 Route::resource('/blog-admin', Blog_AdminController::class);
 Route::resource('/product-admin', Product_AdminController::class);
+Route::resource('/product-details-admin', Product_detailsController::class);

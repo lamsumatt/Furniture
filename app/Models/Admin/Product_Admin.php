@@ -16,6 +16,7 @@ class Product_Admin extends Model
     protected $table = 'product';
 
     public function Product_details(){
-        return $this->hasMany(Product_details::class, 'product_id', 'id');
+        return $this->hasMany('App\Models\Admin\Product_details', 'product_id', 'id');
     }
+    
 }

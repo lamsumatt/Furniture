@@ -42,9 +42,10 @@
         </div>
         <!-- Spinner End -->
 
-
+        @include('admincp.side')
         <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
+        {{--  --}}
+        {{-- <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
@@ -63,7 +64,7 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="{{ asset('/admincp/dashboard') }}" class="nav-item nav-link active"><i
+                    <a href="{{ route('admincp/dashboard') }}" class="nav-item nav-link active"><i
                             class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
@@ -75,6 +76,14 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                                class="fa fa-laptop me-2"></i>Product details</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="{{ route('product-details-admin.create') }}" class="dropdown-item">Add Products</a>
+                            <a href="{{ route('product-details-admin.index') }}" class="dropdown-item">List Products</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                                 class="fa fa-laptop me-2"></i>Blog</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -82,7 +91,7 @@
                             <a href="{{ route('blog-admin.index') }}" class="dropdown-item">List blogs</a>
                         </div>
                     </div>
-
+             
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                                 class="far fa-file-alt me-2"></i>Others</a>
@@ -93,10 +102,10 @@
                     </div>
                 </div>
             </nav>
-        </div>
-        {{-- <div>
-            @yield('sidebar')
         </div> --}}
+        <div class="container">
+            @yield('content')
+        </div>
 
         <!-- Sidebar End -->
 
@@ -495,6 +504,7 @@
     </div>
 
     <!-- JavaScript Libraries -->
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('admin/lib/chart/chart.min.js') }}"></script>
@@ -504,7 +514,43 @@
     <script src="{{ asset('admin/lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ asset('admin/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ asset('admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <script type="text/javascript">
+        function ChangeToSlug() {
+            var slug;
+            //Đổi chữ hoa thành chữ thường
+            slug = document.getElementById("slug").value;
+            slug = slug.toLowerCase();
 
+            //Đổi ký tự có dấu thành không dấu
+            slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+            slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+            slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+            slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+            slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+            slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+            slug = slug.replace(/đ/gi, 'd');
+
+            //Xóa các ký tự đặc biệt
+            slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+
+            //Đổi khoảng trắng thành ký tự gạch ngang
+            slug = slug.replace(/ /gi, " - ");
+
+            //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+            //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+            slug = slug.replace(/\-\-\-\-\-/gi, '-');
+            slug = slug.replace(/\-\-\-\-/gi, '-');
+            slug = slug.replace(/\-\-\-/gi, '-');
+            slug = slug.replace(/\-\-/gi, '-');
+
+            //Xóa các ký tự gạch ngang ở đầu và cuối
+            slug = '@' + slug + '@';
+            slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+
+            //In slug ra textbox có id “convert_slug”
+            document.getElementById('convert_slug').value = slug;
+        }
+    </script>
     <!-- Template Javascript -->
     <script src="{{ asset('admin/js/main.js') }}"></script>
 </body>
