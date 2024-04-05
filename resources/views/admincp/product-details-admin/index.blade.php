@@ -3,7 +3,7 @@
 @section('content')
     @include('admincp.side')
 
-    <div class="container">
+    <div class="container" style="border: none">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -19,9 +19,9 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Tên truyện</th>
+                                    <th scope="col">Tên sản phẩm</th>
                                     <th scope="col">Hình ảnh</th>
-                                    <th scope="col">Slug truyện</th>
+                                    <th scope="col">Giá</th>
                                     <th scope="col">Tóm tắt</th>
                                     <th scope="col">Danh mục</th>
                                     <th scope="col">Kích hoạt</th>
@@ -29,26 +29,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($list_ as $key => $comic)
+                                @foreach ($list_product as $key => $list)
                                     <tr>
                                         <th scope="row">{{ $key }}</th>
-                                        <td>{{ $comic->tentruyen }}</td>
-                                        <td><img src="{{ asset('uploads/product-img/' . $detail->images) }}"
+                                        <td>{{ $list->prDetails_name }}</td>
+                                        <td><img src="{{ asset('uploads/product_img/' . $list->images) }}"
                                                 width="200px" height="auto"></td>
-                                        <td>{{ $comic->slug_truyen }}</td>
-                                        <td>{{ $comic->tomtat }}</td>
-                                        <td>{{ $comic->category->tendanhmuc }}</td>
+                                        <td>{{ $list->price }}</td>
+                                        <td>{{ $list->summary }}</td>
+                                        <td>{{ $list->product_admin->product_name }}</td>
                                         <td>
-                                            @if ($comic->kichhoat == 0)
+                                            @if ($list->activated == 0)
                                                 <span class="text text-success">Kích hoạt</span>
                                             @else
                                                 <span class="text text-success">Không kích hoạt</span>
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('comic.edit', ['comic' => $comic->id]) }}"
+                                            <a href="{{ route('product-details-admin.edit', [ $list->id]) }}"
                                                 class="btn btn-primary">edit</a>
-                                            <form action="{{ route('comic.destroy', ['comic' => $comic->id]) }}"
+                                            <form action="{{ route('product-details-admin.destroy', [$list->id]) }}"
                                                 method="POST">
                                                 @method('DELETE')
                                                 @csrf

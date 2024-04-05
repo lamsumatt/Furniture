@@ -13,8 +13,8 @@ class Product_AdminController extends Controller
      */
     public function index()
     {
-        $product = Product_Admin::orderBy('id', 'desc')->get();
-        return view('admincp.product-admin.index')->with(compact('product'));
+        $product_admin = Product_Admin::orderBy('id', 'desc')->get();
+        return view('admincp.product-admin.index')->with(compact('product_admin'));
     }
 
     /**
@@ -33,8 +33,8 @@ class Product_AdminController extends Controller
     {
         $data = $request->validate(
             [
-                'product_name' => 'required|unique:product|max:255',
-                'slug_product' => 'required|unique:product|max:255',
+                'product_name' => 'required|unique:product_admin|max:255',
+                'slug_product' => 'required|unique:product_admin|max:255',
                 'product_description' => 'required|max:255',
                 'activated' => 'required',
             ],
@@ -46,12 +46,12 @@ class Product_AdminController extends Controller
             ]
         );
 
-        $product = new Product_Admin();
-        $product->product_name = $data['product_name'];
-        $product->slug_product = $data['slug_product'];
-        $product->product_description = $data['product_description'];
-        $product->activated = $data['activated'];
-        $product->save();
+        $product_admin = new Product_Admin();
+        $product_admin->product_name = $data['product_name'];
+        $product_admin->slug_product = $data['slug_product'];
+        $product_admin->product_description = $data['product_description'];
+        $product_admin->activated = $data['activated'];
+        $product_admin->save();
         return redirect()->back()->with('status', 'Thêm sản phẩm thành công');
     }
 
@@ -68,8 +68,9 @@ class Product_AdminController extends Controller
      */
     public function edit(string $id)
     {
-        $product = Product_Admin::find($id);
-        return view('admincp.product-admin.edit')->with(compact('product'));
+        
+        $product_admin= Product_Admin::find($id);
+        return view('admincp.product-admin.edit')->with(compact('product_admin'));
     }
 
     /**
@@ -79,8 +80,8 @@ class Product_AdminController extends Controller
     {
         $data = $request->validate(
             [
-                'product_name' => 'required|unique:product|max:255',
-                'slug_product' => 'required|unique:product|max:255',
+                'product_name' => 'required|unique:product_admin|max:255',
+                'slug_product' => 'required|unique:product_admin|max:255',
                 'product_description' => 'required|max:255',
                 'activated' => 'required',
             ],
@@ -91,12 +92,12 @@ class Product_AdminController extends Controller
             ]
         );
 
-        $product = Product_Admin::find($id);
-        $product->product_name = $data['product_name'];
-        $product->slug_product = $data['slug_product'];
-        $product->product_description = $data['product_description'];
-        $product->activated = $data['activated'];
-        $product->save();
+        $product_admin = Product_Admin::find($id);
+        $product_admin->product_name = $data['product_name'];
+        $product_admin->slug_product = $data['slug_product'];
+        $product_admin->product_description = $data['product_description'];
+        $product_admin->activated = $data['activated'];
+        $product_admin->save();
         return redirect()->back()->with('status', 'Cập nhật sản phẩm thành công');
     }
 
@@ -105,8 +106,8 @@ class Product_AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        $product = Product_Admin::find($id);
-        $product->delete();
+        $product_admin = Product_Admin::find($id);
+        $product_admin->delete();
         return redirect()->back()->with('status', 'Xoá sản phẩm thành công');
     }
 }

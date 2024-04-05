@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('product_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('product_id');
+            $table->text('summary');
+            $table->string('images');
+            $table->string('prDetails_name')->unique();
+            $table->string('slug_prDetails');
+            $table->integer('activated');
+            $table->float('price', 8, 2);
         });
     }
 

@@ -24,7 +24,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form method="POST" action="{{ route('product-admin.update', [$product->id]) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('product-admin.update', [$product_admin->id]) }}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="form-group">
@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Kích hoạt</label>
                             <select name="kichhoat" class="custom-select">
-                                @if ($product->activated == 1)
+                                @if ($product_admin->activated == 1)
                                     <option selected value="0">Kích hoạt</option>
                                     <option value="1">Không kích hoạt</option>
                                 @else
@@ -54,7 +54,7 @@
                                     <option selected value="1">Không kích hoạt</option>
                                 @endif
                             </select>
-                            <button type="submit" name="themdanhmuc" class="btn btn-primary">Thêm</button>
+                            <button type="submit" name="themdanhmuc" class="btn btn-primary">Cập nhật</button>
                     </form>
                 </div>
             </div>

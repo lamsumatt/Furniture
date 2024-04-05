@@ -13,10 +13,10 @@ class Product_Admin extends Model
         'product_name', 'product_description', 'slug_product', 'activated',
     ];
     protected $primaryKey = 'id';
-    protected $table = 'product';
+    protected $table = 'product_admin';
 
     public function Product_details(){
-        return $this->hasMany('App\Models\Admin\Product_details', 'product_id', 'id');
+        return $this->hasMany(Product_details::class, 'prDetails_id', 'id');
     }
     
 }

@@ -26,41 +26,47 @@
 
                         <form method="POST" action="{{ route('product-details-admin.store') }}" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="exampleInputEmail1">Tên sản phẩm</label>
                                 <input type="text" name="prDetails_name" onkeyup="ChangeToSlug();"
                                     value="{{ old('prDetails_name') }}" class="form-control" id="slug"
-                                    aria-describedby="emailHelp" placeholder="Tên truyện...">
+                                    aria-describedby="emailHelp" placeholder="Tên ...">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="exampleInputEmail1">Slug sản phẩm</label>
                                 <input type="text" name="slug_prDetails" value="{{ old('slug_product') }}"
                                     class="form-control" id="convert_slug" aria-describedby="emailHelp"
-                                    placeholder="slug truyện...">
+                                    placeholder="slug ...">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputEmail1">Giá sản phẩm</label>
+                              <input type="text" name="price" value="{{ old('price') }}" class="form-control" id="">
+
+                            </div>
+
+                            <div class="form-group mb-3">
                                 <label for="exampleInputEmail1">Tóm tắt sản phẩm</label>
-                                <textarea class="form-control" rows="5" name="tomtat" id="tomtat" style="resize: none"></textarea>
+                                <textarea class="form-control" rows="5" name="summary" id="summary" style="resize: none"></textarea>
 
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="exampleInputEmail1">Danh mục sản phẩm</label>
-                                <select name="danhmuc" class="custom-select">
-                                    @foreach ($details as $key => $detail)
-                                        <option value="{{ $details->id }}">{{ $details->product_name }}</option>\
+                                <select name="product_admin" class="custom-select">
+                                    @foreach ($product_admin as $key => $detail)
+                                        <option value="{{ $detail->id }}">{{ $detail->product_name }}</option>\
                                     @endforeach
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
                                 <input type="file" name="images" class="form-control-file" placeholder="hình ảnh...">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="exampleInputEmail1">Kích hoạt</label>
                                 <select name="activated" class="custom-select">
                                     <option value="0">Kích hoạt</option>

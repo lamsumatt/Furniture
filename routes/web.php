@@ -20,7 +20,7 @@ Route::get('/', function () {
 // Route::post('/register', 'AuthController@postRegister');
 
 // Route::get('/logout', 'AuthController@logout');
-Auth::routes();
+// Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

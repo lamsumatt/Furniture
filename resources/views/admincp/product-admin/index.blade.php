@@ -26,11 +26,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($product as $key => $pro)
+                                @foreach ($product_admin as $key => $pro)
                                     <tr>
                                         <th scope="row">{{ $key }}</th>
                                         <td>{{ $pro->product_name }}</td>
-                                        {{-- <td>{{ $pro->slug_product }}</td> --}}
+                                        <td>{{ $pro->slug_product }}</td>
                                         <td>{{ $pro->product_description }}</td>
                                         {{-- <td>{{ $pro->comic->tentruyen }}</td> --}}
                                         <td>

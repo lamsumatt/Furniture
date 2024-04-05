@@ -14,8 +14,8 @@ class Product_detailsController extends Controller
      */
     public function index()
     {
-        $list_images = Product_details::with('Product')->orderBy('id', 'desc')->get();
-        return view('admincp.product-details-admin.index')->with(compact('list_images'));
+        $list_product = Product_details::with('Product_admin')->orderBy('id', 'desc')->get();
+        return view('admincp.product-details-admin.index')->with(compact('list_product'));
     }
 
     /**
@@ -23,6 +23,8 @@ class Product_detailsController extends Controller
      */
     public function create()
     {
+        $product_admin = Product_Admin::orderBy('id', 'desc')->get();
+        return view('admincp.product-details-admin.create')->with(compact('product_admin'));
     }
 
     /**
@@ -32,28 +34,30 @@ class Product_detailsController extends Controller
     {
         $data = $request->validate(
             [
-                'prDetails_name' => 'required|unique:truyen|max:255',
-                'slug_prDetails' => 'required|unique:truyen|max:255',
-                'images' => 'required|image|mimes:jpg,png,jpeg,gif,svg|dimensions:min_width=100,min_height=100,
-                                    max_width=1000,max_height=1000',
+                'prDetails_name' => 'required|unique:product_details|max:255',
+                'slug_prDetails' => 'required|unique:product_details|max:255',
+                'images' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
                 'summary' => 'required',
                 'activated' => 'required',
-                'product' => 'required',
+                'price' => 'required',
+                'product_admin' => 'required',
             ],
             [
-                'prDetails_name.unique' => 'Tên truyện đã có, điền tên khác',
-                'prDetails_name.required' => 'không được để trống tên truyện',
-                'slug_prDetails.unique' => 'không được để trống slug truyện',
+                'prDetails_name.unique' => 'Tên sản phẩm đã có, điền tên khác',
+                'prDetails_name.required' => 'không được để trống tên sản phẩm',
+                'slug_prDetails.unique' => 'không được để trống slug sản phẩm',
                 'images.required' => 'không được để trống hình ảnh',
-                'summary.required' => 'không được để trống tóm tắt truyện',
+                'price.required' => 'không để trống giá sản phẩm',
+                'summary.required' => 'không được để trống tóm tắt sản phẩm',
             ]
         );
         $details = new Product_details();
         $details->prDetails_name = $data['prDetails_name'];
         $details->slug_prDetails = $data['slug_prDetails'];
         $details->summary = $data['summary'];
+        $details->price = $data['price'];
         $details->activated = $data['activated'];
-        $details->product_id = $data['product'];
+        $details->product_id = $data['product_admin'];
 
         // add image into folder\
         $get_image = $request->images;
@@ -84,8 +88,8 @@ class Product_detailsController extends Controller
     public function edit(string $id)
     {
         $details = Product_details::find($id);
-        $product = Product_Admin::orderBy('id', 'desc')->get();
-        return view('admincp.product-details-admin.edit')->with(compact('details', 'product'));
+        $product_admin = Product_Admin::orderBy('id', 'desc')->get();
+        return view('admincp.product-details-admin.edit')->with(compact('details', 'product_admin'));
     }
 
     /**
@@ -93,7 +97,29 @@ class Product_detailsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate(
+        [
+            'prDetails_name' => 'required|max:255',
+            'slug_prDetails' => 'required|max:255',
+            'summary' => 'required',
+            'activated' => 'required',
+            'price' => 'required',
+            // Thêm quy tắc xác thực cho product_admin
+            'product_admin' => 'required',
+    ], [
+            'prDetails_name.required' => 'không được để trống tên sản phẩm',
+            'slug_prDetails.required' => 'không để trống slug sản phẩm',
+            'summary.required' => 'không được để trống tóm tắt sản phẩm',
+    ]);
+        $details = Product_details::find($id);
+        $details->prDetails_name = $data['prDetails_name'];
+        $details->slug_prDetails = $data['slug_prDetails'];
+        $details->summary = $data['summary'];
+        $details->price = $data['price'];
+        $details->activated = $data['activated'];
+        $details->product_id = $data['product_admin'];
+        $details->save();
+        return redirect()->back()->with('status', 'Đã cập nhật thành công');
     }
 
     /**
@@ -101,6 +127,8 @@ class Product_detailsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $details = Product_details::find($id);
+        $details->delete();
+        return redirect()->back()->with('status', 'Đã xóa thành công');
     }
 }
