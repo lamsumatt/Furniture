@@ -18,9 +18,11 @@ return new class extends Migration
             $table->text('summary');
             $table->string('images');
             $table->string('prDetails_name')->unique();
-            $table->string('slug_prDetails');
-            $table->integer('activated');
+            $table->longText('summary_content');
             $table->float('price', 8, 2);
+            $table->integer('quantity');
+            $table->integer('discount');
+            $table->integer('activated');
         });
     }
 

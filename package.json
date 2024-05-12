@@ -16,5 +16,8 @@
         "vite": "^5.2.7",
         "vue": "^3.2.37",
         "webpack": "^5.91.0"
+    },
+    "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^41.3.0"
     }
 }

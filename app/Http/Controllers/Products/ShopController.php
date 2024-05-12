@@ -12,7 +12,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return view('products.shop');
+        return view('templates.products.shop');
     }
 
     /**

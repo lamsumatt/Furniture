@@ -14,14 +14,13 @@ return new class extends Migration
         Schema::create('blog_admins', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name_blog');
+            $table->string('name_blog')->unique();
             $table->string('name_admin');
-            $table->string('description');
+            $table->text('summary_content');
             $table->string('image');
-            $table->string('summary');
-            $table->dateTime('day_update');
-
-
+            $table->longtext('summary');
+            $table->dateTime('day_update')->default(now());
+            $table->integer('activated');
         });
     }
 

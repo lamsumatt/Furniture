@@ -46,7 +46,7 @@
                     <li><a class="nav-link" href="{{ asset('./services') }}">Services</a></li>
                     <li><a class="nav-link" href="{{ asset('./blog') }}">Blog</a></li>
                     <li><a class="nav-link" href="{{ asset('./contact') }}">Contact us</a></li>
-                    <li><a class="nav-link" href="{{ asset('home') }}">Login</a></li>
+                    {{-- <li><a class="nav-link" href="{{ asset('home') }}">Login</a></li> --}}
 
                 </ul>
 

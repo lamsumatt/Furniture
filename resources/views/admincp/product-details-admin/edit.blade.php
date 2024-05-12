@@ -33,17 +33,28 @@
                                     value="{{ $details->prDetails_name }}" class="form-control" id="slug"
                                     aria-describedby="emailHelp" placeholder="Tên sản phẩm...">
                             </div>
-
+                            
                             <div class="form-group mb-3">
-                                <label for="exampleInputEmail1">Slug sản phẩm</label>
-                                <input type="text" name="slug_prDetails" value="{{ $details->slug_prDetails }}"
-                                    class="form-control" id="convert_slug" aria-describedby="emailHelp"
-                                    placeholder="slug sản phẩm...">
+                                <label for="exampleInputEmail1">Giá sản phẩm</label>
+                              <input type="text" name="price" value="{{ $details->price }}" class="form-control" id="">
                             </div>
-
+                            <div class="form-group mb-3">
+                                <label for="exampleInputEmail1">Chiết khấu</label>
+                              <input type="text" name="discount" value="{{ $details->discount }}" class="form-control" id="">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="exampleInputEmail1">Số lượng</label>
+                              <input type="text" name="quantity" value="{{ $details->quantity }}" class="form-control" id="">
+                            </div>
                             <div class="form-group mb-3">
                                 <label for="exampleInputEmail1">Tóm tắt sản phẩm</label>
                                 <textarea class="form-control" rows="5" name="summary" id="summary" style="resize: none">{{ $details->summary }}</textarea>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="exampleInputEmail1">Nội dung sản phẩm</label>
+                                <textarea class="form-control" rows="5" name="summary_content" id="summary_content" style="resize: none">{{ $details->summary_content }}</textarea>
+
                             </div>
 
                             <div class="form-group mb-3">

@@ -34,21 +34,27 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="exampleInputEmail1">Slug sản phẩm</label>
-                                <input type="text" name="slug_prDetails" value="{{ old('slug_product') }}"
-                                    class="form-control" id="convert_slug" aria-describedby="emailHelp"
-                                    placeholder="slug ...">
-                            </div>
-
-                            <div class="form-group mb-3">
                                 <label for="exampleInputEmail1">Giá sản phẩm</label>
                               <input type="text" name="price" value="{{ old('price') }}" class="form-control" id="">
-
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="exampleInputEmail1">Chiết khấu</label>
+                              <input type="text" name="discount" value="{{ old('discount') }}" class="form-control" id="">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="exampleInputEmail1">Số lượng</label>
+                              <input type="text" name="quantity" value="{{ old('quantity') }}" class="form-control" id="">
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="exampleInputEmail1">Tóm tắt sản phẩm</label>
                                 <textarea class="form-control" rows="5" name="summary" id="summary" style="resize: none"></textarea>
+
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="exampleInputEmail1">Nội dung sản phẩm</label>
+                                <textarea class="form-control" rows="5" name="summary_content" id="summary_content" style="resize: none"></textarea>
 
                             </div>
 
@@ -81,4 +87,13 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js-custom')
+<script>
+    ClassicEditor
+    .create( document.querySelector( '#summary' ) );\
+    .catch( error => {
+        console.error( error );
+    })
+</script>
 @endsection

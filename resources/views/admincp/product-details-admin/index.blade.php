@@ -5,9 +5,9 @@
 
     <div class="container" style="border: none">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="row-md-8">
                 <div class="card">
-                    <div class="card-header">Liệt kê truyện</div>
+                    <div class="card-header">Liệt kê bài viết</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -18,14 +18,16 @@
                         <table class="table table-triped">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Tên sản phẩm</th>
-                                    <th scope="col">Hình ảnh</th>
-                                    <th scope="col">Giá</th>
-                                    <th scope="col">Tóm tắt</th>
-                                    <th scope="col">Danh mục</th>
-                                    <th scope="col">Kích hoạt</th>
-                                    <th scope="col">Quản lý</th>
+                                    <th scope="row">#</th>
+                                    <th scope="row">Tên sản phẩm</th>
+                                    <th scope="row">Hình ảnh</th>
+                                    <th scope="row">Giá</th>
+                                    <th scope="row">Số lượng</th>
+                                    
+                                    <th scope="row">Tóm tắt</th>
+                                    <th scope="row">Nội dung sản phẩm</th>
+                                    <th scope="row">Kích hoạt</th>
+                                    <th scope="row">Quản lý</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,8 +38,9 @@
                                         <td><img src="{{ asset('uploads/product_img/' . $list->images) }}"
                                                 width="200px" height="auto"></td>
                                         <td>{{ $list->price }}</td>
+                                        <td>{{ $list->quantity }}</td>
+                                        <td>{{ $list->summary_content }}</td>
                                         <td>{{ $list->summary }}</td>
-                                        <td>{{ $list->product_admin->product_name }}</td>
                                         <td>
                                             @if ($list->activated == 0)
                                                 <span class="text text-success">Kích hoạt</span>
